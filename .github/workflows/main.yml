@@ -17,10 +17,10 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y libmicrohttpd-dev
 
     - name: Compile screenhat_server
-      run: gcc screenhat_server.c -o screenhat_server -lmicrohttpd
+      run: gcc http_server.c -o http_server -lmicrohttpd
 
     - name: Compile screenhat_daemon
-      run: gcc screenhat_daemon.c -o screenhat_daemon
+      run: gcc media_daemon.c -o media_daemon
 
     - name: Upload binaries to release
       uses: softprops/action-gh-release@v1
