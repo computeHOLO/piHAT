@@ -24,7 +24,7 @@ void play_media(const char *filename) {
         system(cmd);
     } else if (ends_with(filename, ".mp4") || ends_with(filename, ".avi") || ends_with(filename, ".mov")) {
         char cmd[600];
-        snprintf(cmd, sizeof(cmd), "omxplayer '%s'", filepath);
+        snprintf(cmd, sizeof(cmd), "mpv --really-quiet '%s'", filepath);
         system(cmd);
     }
 }
