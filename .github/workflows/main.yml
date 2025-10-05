@@ -1,0 +1,32 @@
+name: Build and Release Echo Node
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0, v2.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y libmicrohttpd-dev
+
+    - name: Compile screenhat_server
+      run: gcc screenhat_server.c -o screenhat_server -lmicrohttpd
+
+    - name: Compile screenhat_daemon
+      run: gcc screenhat_daemon.c -o screenhat_daemon
+
+    - name: Upload binaries to release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          screenhat_server
+          screenhat_daemon
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
