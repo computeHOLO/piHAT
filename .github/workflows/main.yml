@@ -26,7 +26,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          screenhat_server
-          screenhat_daemon
+          http_server
+          media_daemon
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
