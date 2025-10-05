@@ -1,0 +1,32 @@
+name: Build and Release Echo Node
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on tags like v1.0.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y libmicrohttpd-dev
+
+    - name: Compile http_server
+      run: gcc http_server.c -o http_server -lmicrohttpd
+
+    - name: Compile media_daemon
+      run: gcc media_daemon.c -o media_daemon
+
+    - name: Upload binaries to release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          http_server
+          media_daemon
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
