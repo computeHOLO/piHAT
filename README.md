@@ -5,7 +5,7 @@ Step 1: Install Dependencies
 
 sudo apt update  
 
-sudo apt install libmicrohttpd-dev fbi omxplayer build-essential  
+sudo apt install libmicrohttpd-dev fbi ffmpeg mpv build-essential  
 
 Step 2: Create media Directory  
 
