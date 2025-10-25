@@ -13,7 +13,7 @@ static int handle_request(void *cls, struct MHD_Connection *connection,
                           const char *version, const char *upload_data,
                           size_t *upload_data_size, void **con_cls) {
     if (strcmp(method, "GET") == 0) {
-        char page[8192] = "<html><body><h1>Echo Node Portal</h1>"
+        char page[8192] = "<html><body><h1>piHAT Portal</h1>"
                           "<form method='POST' enctype='multipart/form-data'>"
                           "<input type='file' name='media'><input type='submit' value='Upload'></form><br>";
 
