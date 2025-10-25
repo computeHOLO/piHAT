@@ -24,7 +24,7 @@ Step 4: Run the code!
 ./screenhat_daemon
 Step 5: Access image uploader  
 
-http://<your-pi-ip>:8080  
+http://pi-ip:8080  
 
 (WILL MAKE AUTO INSTALLER SOON)  
 
